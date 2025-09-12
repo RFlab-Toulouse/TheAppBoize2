@@ -52,7 +52,7 @@ downloaddataset<-function(x,file,cnames=T,rnames=T){
     write.table(x,file,sep = ",",dec=".",col.names = cnames,row.names = rnames)
   }
   if(ext=="xlsx"){
-    write.xlsx(x,file,col.names = cnames,row.names =rnames )
+    xlsx::write.xlsx(x,file,col.names = cnames,row.names =rnames )
   }
 }
 
