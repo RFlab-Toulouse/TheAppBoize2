@@ -103,9 +103,10 @@ MODEL<-reactive({
           lev<-levels(x = learningmodel[,1])
           names(lev)<-c("positif","negatif")
           
+          
           #prediction a partir du model
           if(predictionparameters$modeltype=="randomforest"){
-            scoreprediction <-predict(object=model,type="prob",newdata = predictionmodel)[,lev["positif"]]
+            scoreprediction <- randomForest:::predict.randomForest(object=model,type="prob",newdata = predictionmodel)[,lev["positif"]]
             predictclassprediction<-vector(length = length(scoreprediction) ) 
             predictclassprediction[which(scoreprediction>=predictionparameters$thresholdmodel)]<-lev["positif"]
             predictclassprediction[which(scoreprediction<predictionparameters$thresholdmodel)]<-lev["negatif"]
