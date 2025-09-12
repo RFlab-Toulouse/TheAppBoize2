@@ -30,6 +30,7 @@ shinyServer(function(input, output,session){
     namelearn<-input$predictionfile$name
   })
   output$predictionfile3<-renderText({
+    req(input$predictionfile$name)
     namelearn<-input$predictionfile$name
   })  
 MODEL<-reactive({
