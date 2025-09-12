@@ -1,4 +1,7 @@
-usePackage <- function(p){
+if (!require("xlsx")) {install.packages("xlsx"); require("xlsx")}
+
+usePackage <- function(p) 
+{
   if (!is.element(p, installed.packages()[,1]))
     install.packages(p, dep = TRUE)
   require(p, character.only = TRUE)
@@ -19,7 +22,7 @@ usePackage("Hmisc")
 usePackage("corrplot")
 usePackage("penalizedSVM")
 usePackage("DT")
-  
+
 importfile<-function (datapath,extension,NAstring="NA",sheet=1,skiplines=0,dec=".",sep=","){
   # datapath: path of the file
   #extention: extention of the file : csv, xls, ou xlsx
