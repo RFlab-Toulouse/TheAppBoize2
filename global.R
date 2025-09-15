@@ -1,4 +1,4 @@
-if (!require("xlsx")) {install.packages("xlsx"); require("xlsx")}
+#if (!require("xlsx")) {install.packages("xlsx"); require("xlsx")}
 
 usePackage <- function(p) 
 {
@@ -15,7 +15,8 @@ usePackage("stats")
 usePackage("pROC")#roccurve
 usePackage("devtools")
 usePackage("reshape2")#melt function
-usePackage("xlsx")#import fichier xls#Fonctions
+# usePackage("xlsx")#import fichier xls#Fonctions
+usePackage("openxlsx")
 usePackage("randomForest")
 usePackage("missForest")
 usePackage("Hmisc")
@@ -52,7 +53,8 @@ downloaddataset<-function(x,file,cnames=T,rnames=T){
     write.table(x,file,sep = ",",dec=".",col.names = cnames,row.names = rnames)
   }
   if(ext=="xlsx"){
-    xlsx::write.xlsx(x,file,col.names = cnames,row.names =rnames )
+    openxlsx:::write.xlsx(x, file = file, colNames = cnames, rowNames = rnames)
+    # write.xlsx(x,file,col.names = cnames,row.names =rnames )
   }
 }
 
